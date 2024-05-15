@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:calculator/widgets/calculator_key.dart';
+import 'package:calculator/routes.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +13,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       title: "Calculator",
       debugShowCheckedModeBanner: false,
-      home: RootPage(),
+      routerConfig: router,
     );
   }
 }
@@ -62,6 +64,20 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
+        appBar: AppBar(
+          title:
+              const Text("Calculator", style: TextStyle(color: Colors.white)),
+          backgroundColor: Colors.black,
+          actions: <Widget>[
+            IconButton(
+              color: Colors.white,
+              icon: const Icon(Icons.settings, size: 40),
+              onPressed: () {
+                context.pushNamed('settings');
+              },
+            ),
+          ],
+        ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
