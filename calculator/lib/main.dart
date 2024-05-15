@@ -104,7 +104,7 @@ class _RootPageState extends State<RootPage> {
                   setState(() {
                     if (isFloat(newText)) {
                       printedText =
-                          (strToDouble(printedText) * (-1)).toString();
+                          (strToDouble(printedText) * (-1)).toStringAsFixed(5);
                     } else {
                       printedText = (strToInt(printedText) * (-1)).toString();
                     }
@@ -122,7 +122,7 @@ class _RootPageState extends State<RootPage> {
                   setState(() {
                     firstNumber = strToDouble(printedText) / 100;
                     secondNumber = null;
-                    printedText = firstNumber.toString();
+                    printedText = firstNumber!.toStringAsFixed(5);
                   });
                 },
               ),
@@ -135,9 +135,6 @@ class _RootPageState extends State<RootPage> {
                 printedText: printedText,
                 onValueChanged: (String newText) {
                   setState(() {
-                    debugPrint("Operator: $operator");
-                    debugPrint("First Number: $firstNumber");
-                    debugPrint("Second Number: $secondNumber");
                     if (firstNumber == null) {
                       firstNumber = strToDouble(printedText);
                       operator = "/";
@@ -149,7 +146,7 @@ class _RootPageState extends State<RootPage> {
                       secondNumber = strToDouble(printedText);
                       firstNumber =
                           calculate(firstNumber!, secondNumber!, operator!);
-                      printedText = firstNumber.toString();
+                      printedText = firstNumber!.toStringAsFixed(5);
                       secondNumber = null;
                       operator = null;
                     }
@@ -168,7 +165,7 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -185,7 +182,7 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -202,7 +199,7 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -218,7 +215,21 @@ class _RootPageState extends State<RootPage> {
                 printedText: printedText,
                 onValueChanged: (String newText) {
                   setState(() {
-                    printedText = newText;
+                    if (firstNumber == null) {
+                      firstNumber = strToDouble(printedText);
+                      operator = "x";
+                      printedText = "0";
+                    } else if (operator == null) {
+                      operator = "x";
+                      printedText = "0";
+                    } else if (secondNumber == null) {
+                      secondNumber = strToDouble(printedText);
+                      firstNumber =
+                          calculate(firstNumber!, secondNumber!, operator!);
+                      printedText = firstNumber!.toStringAsFixed(5);
+                      secondNumber = null;
+                      operator = null;
+                    }
                   });
                 },
               ),
@@ -234,7 +245,8 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
+                      ;
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -251,7 +263,7 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -268,7 +280,7 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -284,7 +296,21 @@ class _RootPageState extends State<RootPage> {
                 printedText: printedText,
                 onValueChanged: (String newText) {
                   setState(() {
-                    printedText = newText;
+                    if (firstNumber == null) {
+                      firstNumber = strToDouble(printedText);
+                      operator = "-";
+                      printedText = "0";
+                    } else if (operator == null) {
+                      operator = "-";
+                      printedText = "0";
+                    } else if (secondNumber == null) {
+                      secondNumber = strToDouble(printedText);
+                      firstNumber =
+                          calculate(firstNumber!, secondNumber!, operator!);
+                      printedText = firstNumber!.toStringAsFixed(5);
+                      secondNumber = null;
+                      operator = null;
+                    }
                   });
                 },
               ),
@@ -300,7 +326,7 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -317,7 +343,7 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -334,7 +360,7 @@ class _RootPageState extends State<RootPage> {
                 onValueChanged: (String newText) {
                   setState(() {
                     if (isFloat(newText)) {
-                      printedText = strToDouble(newText).toString();
+                      printedText = strToDouble(newText).toStringAsFixed(5);
                     } else {
                       printedText = strToInt(newText).toString();
                     }
@@ -350,7 +376,21 @@ class _RootPageState extends State<RootPage> {
                 printedText: printedText,
                 onValueChanged: (String newText) {
                   setState(() {
-                    printedText = newText;
+                    if (firstNumber == null) {
+                      firstNumber = strToDouble(printedText);
+                      operator = "+";
+                      printedText = "0";
+                    } else if (operator == null) {
+                      operator = "+";
+                      printedText = "0";
+                    } else if (secondNumber == null) {
+                      secondNumber = strToDouble(printedText);
+                      firstNumber =
+                          calculate(firstNumber!, secondNumber!, operator!);
+                      printedText = firstNumber.toString();
+                      secondNumber = null;
+                      operator = null;
+                    }
                   });
                 },
               ),
@@ -401,8 +441,8 @@ class _RootPageState extends State<RootPage> {
                       secondNumber = strToDouble(printedText);
                       firstNumber =
                           calculate(firstNumber!, secondNumber!, operator!);
-                      debugPrint(firstNumber.toString());
-                      printedText = firstNumber.toString();
+                      printedText = firstNumber!.toStringAsFixed(5);
+                      ;
                       secondNumber = null;
                       operator = null;
                     }

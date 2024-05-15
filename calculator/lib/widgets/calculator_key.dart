@@ -27,7 +27,6 @@ class CalculatorKey extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         child: ElevatedButton(
           onPressed: () {
-            debugPrint('Button pressed: $text');
             String newText = (printedText + text);
             onValueChanged(newText);
           },
